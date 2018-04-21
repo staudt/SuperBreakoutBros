@@ -1,0 +1,15 @@
+Super Breakout Bros
+
+(done). Planning
+
+-> Setup code
+
+. Tiles
+1280x720
+tiles: 40x40 px (36x18 tiles)
+
+
+. Breakout/ball
+. Break tiles
+. Platformer
+. Refining/Refactor
