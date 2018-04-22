@@ -28,14 +28,9 @@ class Player extends Sprite {
       }
     } else if (target.hasTag('ball')) {
       target.bounceFrom(target.getCollision(this));
-      target.setSpeedY(target.speedY+this.speedY-2);
-      if (direction.top) {
-        target.setSpeedY(target.speedY+this.speedY-4);
-        target.setSpeedX(target.speedX+((target.centerX-this.centerX)/6));
-        console.log(target.centerX-this.centerX);
-      } if (direction.left || direction.right) {
-        if (target.speedY>0) target.setSpeedY(target.speedY*(-1)); 
-        target.setSpeedX(this.speedX);
+      target.setSpeedX(((target.centerX-this.centerX)/4));
+      if (!direction.bottom) {
+        target.setSpeedY(target.speedY+this.speedY-6);
       }
       this.bounceFrom(direction);
     }
