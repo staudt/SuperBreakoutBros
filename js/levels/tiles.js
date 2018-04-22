@@ -31,7 +31,9 @@ class Tile extends Sprite {
   onBounce(ball) {
     if(this.health > 0) { // breakable
       if (--this.health<=0) {
-        this.scene.add(new Monster().setPosition(this.center));
+        if (Quick.random(5+level)>3) {
+          this.scene.add(new Monster().setPosition(this.center));
+        }
         this.innerRect.expire(); this.expire();
       } else {
         this.updateColor();

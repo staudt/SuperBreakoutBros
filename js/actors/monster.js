@@ -9,7 +9,7 @@ class Monster extends Sprite {
     this.addTag('monster');
     this.setBoundary();
     this.setMaxSpeedY(14);
-    this.canJump = true;
+    this.canJump = false;
   }
 
   update() {
@@ -22,34 +22,34 @@ class Monster extends Sprite {
     }
   }
 
-  platformCollision(target) {
-    let direction = this.getCollision(target);
-    if(direction.bottom) {
-      this.stop();
-      this.state = Standing;
-      this.setBottom(target.top-1)
-      this.canJump = true;
-    } else if (direction.left) {
-      this.setLeft(target.right+1);
-    } else if (direction.right) {
-      this.setRight(target.left-1);
-    } else if (direction.top) {
-      this.stop().setTop(target.bottom+1);
-    }
-  }
-
   onBounce() {
-    this.expire();
+    if (this.tick > 10) {
+      this.expire();
+    }
   }
 
   onCollision(target) {
     let direction = this.getCollision(target);
     if (target.hasTag('tile')) {
-      this.platformCollision(target);
+      platformCollision(this, target);
     } else {
       this.bounceFrom(direction);
     }
   }
+}
 
-
+function platformCollision(parent, target) {
+  let direction = parent.getCollision(target);
+  if(direction.bottom) {
+    parent.stop();
+    parent.state = Standing;
+    parent.setBottom(target.top-1)
+    parent.canJump = true;
+  } else if (direction.left) {
+    parent.setLeft(target.right+1);
+  } else if (direction.right) {
+    parent.setRight(target.left-1);
+  } else if (direction.top) {
+    parent.stop().setTop(target.bottom+1);
+  }
 }
