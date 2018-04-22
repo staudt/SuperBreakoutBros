@@ -13,8 +13,8 @@ class Player extends Sprite {
   }
 
   onCollision(target) {
+    let direction = this.getCollision(target);
     if (target.hasTag('tile')) {
-      let direction = this.getCollision(target);
       if(direction.bottom) {
         this.stop();
         this.state = Standing;
@@ -26,6 +26,18 @@ class Player extends Sprite {
       } else if (direction.top) {
         this.stop().setTop(target.bottom+1);
       }
+    } else if (target.hasTag('ball')) {
+      target.bounceFrom(target.getCollision(this));
+      target.setSpeedY(target.speedY+this.speedY-2);
+      if (direction.top) {
+        target.setSpeedY(target.speedY+this.speedY-4);
+        target.setSpeedX(target.speedX+((target.centerX-this.centerX)/6));
+        console.log(target.centerX-this.centerX);
+      } if (direction.left || direction.right) {
+        if (target.speedY>0) target.setSpeedY(target.speedY*(-1)); 
+        target.setSpeedX(this.speedX);
+      }
+      this.bounceFrom(direction);
     }
   }
 
@@ -50,7 +62,7 @@ class Standing extends PlayerState {
   static update(parent) {
     super.update(parent);
     if (parent.controller.keyDown(Command.A)) {
-      parent.setSpeedY(-14);
+      parent.setSpeedY(-15);
       parent.state = Jumping;
     }
   }
