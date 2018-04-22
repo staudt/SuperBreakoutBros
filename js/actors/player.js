@@ -5,13 +5,24 @@ class Player extends Sprite {
     super();
     this.controller = Quick.getController();
     this.state = Jumping;
-    this.setImageId('standing');
-    this.setSize(30, 36);
     this.setSolid(true);
     this.setMaxSpeedY(12);
     this.addTag('player');
+    this.turnedRight = true;
+    this.lastRunning = false;
     this.hp = 3;
     this.blinking = 0;
+    this.updateAnimation();
+    this.setSize(28, 34);
+  }
+
+  updateAnimation() {
+    if (this.speedX == 0) {
+      this.setAnimation(this.turnedRight ? PLAYER_STANDING_RIGHT : PLAYER_STANDING_LEFT);
+    } else {
+      this.setAnimation(this.turnedRight ? PLAYER_RUNNING_RIGHT : PLAYER_RUNNING_LEFT);
+    }
+    this.setSize(28, 34);
   }
 
   onCollision(target) {
@@ -55,6 +66,7 @@ class Player extends Sprite {
     } else {
       this.setVisible(true);
     }
+    this.updateAnimation();
   }
 }
 
@@ -62,8 +74,10 @@ class PlayerState {
   static update(parent) {
     parent.setSpeedY(parent.speedY+0.8);
     if (parent.controller.keyDown(Command.LEFT)) {
+      parent.turnedRight = false;
       parent.setSpeedX(-4);
     } else if (parent.controller.keyDown(Command.RIGHT)) {
+      parent.turnedRight = true;
       parent.setSpeedX(4);
     }
   }

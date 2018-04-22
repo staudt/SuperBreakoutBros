@@ -3,13 +3,20 @@
 class Monster extends Sprite {
   constructor() {
     super();
-    this.setImageId('mstanding');
-    this.setSize(30, 36);
     this.setSolid(true);
     this.addTag('monster');
     this.setBoundary();
     this.setMaxSpeedY(14);
     this.canJump = false;
+  }
+
+  updateAnimation() {
+    if (this.centerX == player.centerX) {
+      this.setAnimation(MONSTER_STANDING_LEFT);
+    } else {
+      this.setAnimation(this.speedX > 0 ? MONSTER_RUNNING_RIGHT : MONSTER_RUNNING_LEFT);
+    }
+    this.setSize(28, 34);
   }
 
   update() {
@@ -20,6 +27,7 @@ class Monster extends Sprite {
       this.setSpeedY(-6);
       this.canJump = false;
     }
+    this.updateAnimation();
   }
 
   onBounce() {
