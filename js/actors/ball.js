@@ -11,13 +11,13 @@ class Ball extends Sprite {
     this.addTag('ball');
     this.setMaxSpeedX(12);
     this.setMaxSpeedY(8);
+    this.setBoundary()
   }
 
   update() {
     //this.setSpeedY(this.speedY+0.05);    
     if (this.speedY>3) this.setSpeedY(this.speedY-0.05)
     if (this.speedY<-3) this.setSpeedY(this.speedY+0.05)
-    console.log(this.speedY);
   }
 
   onCollision(target) {

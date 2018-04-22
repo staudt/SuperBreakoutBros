@@ -10,6 +10,7 @@ class Player extends Sprite {
     this.setSolid(true);
     this.setMaxSpeedY(12);
     this.addTag('player');
+    this.setBoundary();
   }
 
   onCollision(target) {
@@ -28,7 +29,7 @@ class Player extends Sprite {
       }
     } else if (target.hasTag('ball')) {
       target.bounceFrom(target.getCollision(this));
-      target.setSpeedX(((target.centerX-this.centerX)/4));
+      target.setSpeedX(((target.centerX-this.centerX)/3));
       if (!direction.bottom) {
         target.setSpeedY(target.speedY+this.speedY-6);
       }
@@ -41,7 +42,7 @@ class Player extends Sprite {
 
 class PlayerState {
   static update(parent) {
-    parent.setSpeedY(parent.speedY+1);
+    parent.setSpeedY(parent.speedY+0.8);
     if (parent.controller.keyDown(Command.LEFT)) {
       parent.setSpeedX(-4);
     } else if (parent.controller.keyDown(Command.RIGHT)) {
@@ -57,7 +58,7 @@ class Standing extends PlayerState {
   static update(parent) {
     super.update(parent);
     if (parent.controller.keyDown(Command.A)) {
-      parent.setSpeedY(-15);
+      parent.setSpeedY(-14);
       parent.state = Jumping;
     }
   }
