@@ -1,29 +1,35 @@
 'use strict';
 
-const BRICK_COLOR = ['#00ff00', '#0000ff', '#aaaaaa', '#999999'];
+const BRICK_COLOR = ['#9F8165', '#028150', '#B7C1C9', '#37A0DF'];
 
 class Tile extends Sprite {
   constructor(health = -1) {
     super();
     this.health = health;
-    this.updateColor();
+    this.setColor(Color.Black);
     this.setSize(TILE_WIDTH, TILE_HEIGHT);
     this.setSolid(true);
     this.addTag('tile');
   }
 
+  init() {
+    this.innerRect = new Sprite().setSize(this.width-2, this.height-2).setLeft(this.left+1).setTop(this.top+1);
+    this.scene.add(this.innerRect);
+    this.updateColor();
+  }
+
   updateColor() {
     if (this.health==-1) {
-      this.setColor('#404040');
+      this.innerRect.setColor('#4C3E20');
     } else {
-      this.setColor(BRICK_COLOR[this.health-1]);
+      this.innerRect.setColor(BRICK_COLOR[this.health-1]);
     }
   }
 
   onBounce(ball) {
     if(this.health > 0) { // breakable
       if (--this.health<=0) {
-        this.expire();
+        this.innerRect.expire(); this.expire();
       } else {
         this.updateColor();
       }
@@ -37,11 +43,12 @@ class Hard extends Tile {
   }
 }
 
-class Lava extends Tile {
+class Lava extends Sprite {
   constructor() {
     super();
-    this.setSolid(false);
+    this.setSize(TILE_WIDTH, TILE_HEIGHT);
     this.setColor('#cc0000');
+    this.setSolid(false);
   }
 }
 

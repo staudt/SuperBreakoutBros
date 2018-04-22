@@ -9,3 +9,5 @@ const Sprite = quick.Sprite;
 
 const TILE_WIDTH = 64;
 const TILE_HEIGHT = 30;
+
+let level = 0;

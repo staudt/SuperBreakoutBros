@@ -3,8 +3,8 @@
 class GameScene extends Scene {
   constructor() {
     super();
-    this.setColor('#ddddff');
-    this.add(new Player().setPosition(200, 200));
+    this.setColor('#2785C0');
+    this.add(new Player().setPosition(300, 200));
     this.add(new Monster().setPosition(400, 400));
     this.add(new Ball().setPosition(500, 400));
     this.build(MAPS[0], tileFactory);
@@ -13,4 +13,6 @@ class GameScene extends Scene {
 
 Quick.setName('Super Breakout Bros');
 Quick.setKeepAspect(true);
-Quick.init(new GameScene);
+
+const scene = new GameScene()
+Quick.init(scene);
