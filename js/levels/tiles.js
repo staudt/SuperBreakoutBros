@@ -1,6 +1,6 @@
 'use strict';
 
-const BRICK_COLOR = ['#bb2020', '#aaaa00', '#a17c4f', '#6666ff'];
+const BRICK_COLOR = ['#00ff00', '#0000ff', '#aaaaaa', '#999999'];
 
 class Tile extends Sprite {
   constructor(health = -1) {

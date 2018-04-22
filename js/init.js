@@ -7,5 +7,5 @@ const Quick = quick.Quick;
 const Scene = quick.Scene;
 const Sprite = quick.Sprite;
 
-const TILE_WIDTH = 40;
+const TILE_WIDTH = 64;
 const TILE_HEIGHT = 30;

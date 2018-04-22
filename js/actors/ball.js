@@ -7,7 +7,7 @@ class Ball extends Sprite {
     this.setSize(20, 20);
     this.setSolid(true);
     this.setSpeedX(1+Quick.random(2));
-    this.setSpeedY(1+Quick.random(2));
+    this.setSpeedY(3);
     this.addTag('ball');
     this.setMaxSpeedX(12);
     this.setMaxSpeedY(8);

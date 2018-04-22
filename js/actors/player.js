@@ -6,7 +6,7 @@ class Player extends Sprite {
     this.controller = Quick.getController();
     this.state = Jumping;
     this.setColor('#202020');
-    this.setSize(40, 34);
+    this.setSize(34, 34);
     this.setSolid(true);
     this.setMaxSpeedY(12);
     this.addTag('player');
@@ -34,7 +34,10 @@ class Player extends Sprite {
         target.setSpeedY(target.speedY+this.speedY-6);
       }
       this.bounceFrom(direction);
+    } else {
+      this.bounceFrom(direction);
     }
+    
   }
 
   update() { this.state.update(this); }
