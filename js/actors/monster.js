@@ -3,8 +3,8 @@
 class Monster extends Sprite {
   constructor() {
     super();
-    this.setColor('#ffff88');
-    this.setSize(34, 34);
+    this.setImageId('mstanding');
+    this.setSize(30, 36);
     this.setSolid(true);
     this.addTag('monster');
     this.setBoundary();

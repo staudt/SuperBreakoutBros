@@ -5,8 +5,8 @@ class Player extends Sprite {
     super();
     this.controller = Quick.getController();
     this.state = Jumping;
-    this.setColor('#F4B890');
-    this.setSize(34, 34);
+    this.setImageId('standing');
+    this.setSize(30, 36);
     this.setSolid(true);
     this.setMaxSpeedY(12);
     this.addTag('player');
