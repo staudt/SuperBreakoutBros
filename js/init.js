@@ -11,3 +11,5 @@ const TILE_WIDTH = 64;
 const TILE_HEIGHT = 30;
 
 let level = 0;
+let player;
+let scene;

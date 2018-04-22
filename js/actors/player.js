@@ -1,6 +1,6 @@
 'use strict';
 
-class Player extends Sprite {
+class Player extends Monster {
   constructor() {
     super();
     this.controller = Quick.getController();
@@ -10,23 +10,12 @@ class Player extends Sprite {
     this.setSolid(true);
     this.setMaxSpeedY(12);
     this.addTag('player');
-    this.setBoundary();
   }
 
   onCollision(target) {
     let direction = this.getCollision(target);
     if (target.hasTag('tile')) {
-      if(direction.bottom) {
-        this.stop();
-        this.state = Standing;
-        this.setBottom(target.top-1)
-      } else if (direction.left) {
-        this.setLeft(target.right+1);
-      } else if (direction.right) {
-        this.setRight(target.left-1);
-      } else if (direction.top) {
-        this.stop().setTop(target.bottom+1);
-      }
+      this.platformCollision(target);
     } else if (target.hasTag('ball')) {
       target.bounceFrom(target.getCollision(this));
       target.setSpeedX(((target.centerX-this.centerX)/3));
@@ -37,8 +26,9 @@ class Player extends Sprite {
     } else {
       this.bounceFrom(direction);
     }
-    
   }
+
+  onBounce() {}
 
   update() { this.state.update(this); }
 }
