@@ -40,7 +40,8 @@ class Player extends Sprite {
       this.bounceFrom(direction);
     }
     if (target.hasTag('monster') && this.blinking <= 0) {
-      if (direction.left || direction.right) {
+      if (direction.left || direction.right && 
+          (this.centerY > target.centerY-8 && this.centerY < target.centerY+8)) {
         if(--this.hp<=0) {
           this.die();
         } else {
