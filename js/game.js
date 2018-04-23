@@ -15,4 +15,7 @@ Quick.setName('Super Breakout Bros');
 Quick.setKeepAspect(true);
 
 scene = new GameScene()
-Quick.init(scene);
+
+document.addEventListener('DOMContentLoaded', function() {
+  Quick.init(scene);
+}, false);
