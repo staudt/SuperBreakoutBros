@@ -8,12 +8,13 @@ const Scene = quick.Scene;
 const Sprite = quick.Sprite;
 const Animation = quick.Animation;
 const Frame = quick.Frame;
+const TextSprite = quick.TextSprite;
 
 const TILE_WIDTH = 64;
 const TILE_HEIGHT = 30;
 
 let level = 0;
-let lifes = 0;
+let lives = 3;
 let player;
 let scene;
 
@@ -64,8 +65,8 @@ const MONSTER_RUNNING_RIGHT = new Animation([
 ]);
 
 const MONSTER_RUNNING_LEFT = new Animation([
-	new Frame(Quick.mirror(document.getElementById('mrunning1')), 4),
-	new Frame(Quick.mirror(document.getElementById('mrunning2')), 4),
-	new Frame(Quick.mirror(document.getElementById('mrunning3')), 4),
-	new Frame(Quick.mirror(document.getElementById('mrunning4')), 4),
+	new Frame(Quick.mirror(document.getElementById('mrunning1')), 12),
+	new Frame(Quick.mirror(document.getElementById('mrunning2')), 12),
+	new Frame(Quick.mirror(document.getElementById('mrunning3')), 12),
+	new Frame(Quick.mirror(document.getElementById('mrunning4')), 12),
 ]);

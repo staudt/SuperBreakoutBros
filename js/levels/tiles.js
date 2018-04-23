@@ -35,6 +35,7 @@ class Tile extends Sprite {
           this.scene.add(new Monster().setPosition(this.center));
         }
         this.innerRect.expire(); this.expire();
+        this.scene.minusOne();
       } else {
         this.updateColor();
       }
