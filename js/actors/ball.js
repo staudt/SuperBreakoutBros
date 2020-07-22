@@ -5,7 +5,7 @@ class Ball extends Sprite {
     super();
     this.setSize(20, 20);
     this.setSolid(true);
-    this.setSpeedX(1+Quick.random(2));
+    this.setSpeedX(1+Videogame.random(2));
     this.setSpeedY(3);
     this.addTag('ball');
     this.setImage('ball');

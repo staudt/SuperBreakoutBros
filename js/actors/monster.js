@@ -23,7 +23,7 @@ class Monster extends Sprite {
     this.setSpeedY(this.speedY+0.2);
     // AI
     this.setSpeedX(player.centerX<this.centerX ? -1 : 1);
-    if (this.canJump && Quick.random(30)==1) {
+    if (this.canJump && Videogame.random(30)==1) {
       this.setSpeedY(-6);
       this.canJump = false;
     }

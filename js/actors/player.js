@@ -3,7 +3,7 @@
 class Player extends Sprite {
   constructor() {
     super();
-    this.controller = Quick.getController();
+    this.controller = Videogame.getController();
     this.state = Jumping;
     this.setSolid(true);
     this.setMaxSpeedY(12);
@@ -62,7 +62,7 @@ class Player extends Sprite {
   update() {
     this.state.update(this);
     if (this.blinking > 0) {
-      this.setVisible(Quick.random(1)==1);
+      this.setVisible(Videogame.random(1)==1);
       --this.blinking;
     } else {
       this.setVisible(true);
