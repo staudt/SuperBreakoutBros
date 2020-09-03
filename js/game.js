@@ -12,7 +12,7 @@ class GameScene extends Scene {
         .setCenterX(this.centerX)
         .setCenterY(this.centerY+100)
       );
-      this.controller = Quick.getController();
+      this.controller = Videogame.getController();
     } else {
       player = new Player().setPosition(300, 200)
       this.add(player);
@@ -42,11 +42,11 @@ class GameScene extends Scene {
   }
 }
 
-Quick.setName('Super Breakout Bros');
-Quick.setKeepAspect(true);
+Videogame.setName('Super Breakout Bros');
+Videogame.setKeepAspect(true);
 
 scene = new GameScene()
 
 document.addEventListener('DOMContentLoaded', function() {
-  Quick.init(scene);
+  Videogame.init(scene);
 }, false);
